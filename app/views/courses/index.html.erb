@@ -1,0 +1,11 @@
+<h1>Courses</h1>
+
+<% @courses.each do |p| %>
+<li>
+<%= link_to p.name, course_path(p) %>
+<%= link_to p.subject, course_path(p) %>
+<%= link_to p.course_time, course_path(p) %>
+
+</li>
+
+<% end %>

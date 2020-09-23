@@ -1,0 +1,12 @@
+<h1> Course</h1>
+<h3>
+<%= @course.name %><br>
+<%= @course.subject %><br>
+<%= @course.course_time %><br>
+
+</h3>
+
+<%= link_to "Back", courses_path %>
+<%= link_to "Edit", edit_course_path %>
+
+<%= button_to "Delete", course_path(@course), method: :delete %>

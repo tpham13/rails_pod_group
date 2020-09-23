@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get '/professors', to: "professors#index"
   resources :professors 
   resources :students
-  resources :classes
+  resources :courses
 
   
 

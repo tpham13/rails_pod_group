@@ -1,0 +1,15 @@
+<h1> Edit Course </h1>
+
+<%= form_for(@course) do |p| %> 
+
+<%= p.label :name %><br>
+<%= p.text_field :name %><br>
+
+<%= p.label :subject %><br>
+<%= p.text_field :subject %><br>
+
+<%= p.label :course_time %><br>
+<%= p.datetime_select :course_time %><br>
+
+<%= p.submit :submit %>
+<%end%>

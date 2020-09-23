@@ -12,10 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_09_10_213553) do
 
-  create_table "classes", force: :cascade do |t|
+  create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "subject"
-    t.datetime "class_time"
+    t.datetime "course_time"
     t.integer "professor_id"
     t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
