@@ -1,0 +1,18 @@
+<h1> Create Student </h1>
+
+<%= form_for(@student) do |p| %> 
+
+<%= p.label :name %><br>
+<%= p.text_field :name %><br>
+
+<%= p.label :email %><br>
+<%= p.email_field :email %><br>
+
+<%= p.label :grade %><br>
+<%= p.text_field :grade %><br>
+
+<%= p.label :password %><br>
+<%= p.text_field :password_digest %><br>
+
+<%= p.submit :submit %>
+<%end%>

@@ -1,0 +1,10 @@
+<h1>Students</h1>
+
+<% @students.each do |p| %>
+<li>
+<%= link_to p.name, student_path(p) %>
+<%= link_to p.email, student_path(p) %>
+<%= link_to p.grade, student_path(p) %>
+</li>
+
+<% end %>
