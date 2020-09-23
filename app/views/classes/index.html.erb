@@ -1,0 +1,12 @@
+<h1>Classes</h1>
+
+<% @classes.each do |p| %>
+<li>
+<%= link_to p.name, class_path(p) %>
+<%= link_to p.subject, class_path(p) %>
+<%= link_to p.class_time, class_path(p) %>
+<%= link_to p.professor_id, class_path(p) %>
+<%= link_to p.student_id, class_path(p) %>
+</li>
+
+<% end %>

@@ -1,9 +1,9 @@
-class CreateClasses < ActiveRecord::Migration[6.0]
+class CreateCourses < ActiveRecord::Migration[6.0]
   def change
-    create_table :classes do |t|
+    create_table :courses do |t|
       t.string :name
       t.string :subject
-      t.datetime :class_time
+      t.datetime :course_time
       t.integer :professor_id
       t.integer :student_id
       t.timestamps

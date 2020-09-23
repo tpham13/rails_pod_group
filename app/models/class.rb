@@ -1,3 +1,3 @@
 class Class < ApplicationRecord
-    
+
 end 
