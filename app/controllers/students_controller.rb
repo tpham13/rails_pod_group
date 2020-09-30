@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     end
   
     def show
-      @student = Student.find(params[:id])
+      @student = find_by_id
     end 
   
     def new
@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     end 
   
     def create
-      @student = Student.create(params.require(:student).permit(:name, :email, :grade, :password_digest))
+      @student = Student.create(student_params)
       if @student 
         redirect_to student_path(@student)
       else 
@@ -22,12 +22,12 @@ class StudentsController < ApplicationController
     end 
 
     def edit
-        @student = Student.find(params[:id])
+        @student = find_by_id
     end
 
     def update
-        @student = Student.find(params[:id])
-        if @student.update(params.require(:student).permit(:name, :email, :grade, :password_digest))
+        @student = find_by_id
+        if @student.update(student_params)
           redirect_to student_path(@student)
         else 
           render :edit
@@ -35,9 +35,16 @@ class StudentsController < ApplicationController
     end
 
     def destroy
-        @student = Student.find(params[:id])
+        @student = find_by_id
         @student.destroy
         redirect_to students_path
     end 
-  
+  private 
+    def student_params
+      params.require(:student).permit(:name, :email, :grade, :password_digest)
+    end
+
+    def find_by_id
+      Student.find(params[:id])
+    end
   end

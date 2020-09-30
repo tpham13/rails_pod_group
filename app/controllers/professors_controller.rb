@@ -6,7 +6,7 @@ class ProfessorsController < ApplicationController
     end
   
     def show
-      @professor = Professor.find(params[:id])
+      @professor = find_by_id
     end 
   
     def new
@@ -14,24 +14,42 @@ class ProfessorsController < ApplicationController
     end 
   
     def create
-      @professor = Professor.create(params.require(:professor).permit(:name))
-      redirect_to professors_path
+      @professor = Professor.new(professor_params)
+      if @professor.valid?
+        @professor.save
+        redirect_to professors_path
+      else
+        render :new
     end 
+  end
 
     def edit
-        @professor = Professor.find(params[:id])
+        @professor = find_by_id
     end
 
     def update
-        @professor = Professor.find(params[:id])
-        @professor.update(params.require(:professor).permit(:name))
-        redirect_to professor_path
+        @professor = find_by_id
+        if @professor.valid?
+          @professor.update(professor_params)
+          redirect_to professor_path
+        else
+          render :edit
+        end
     end
 
     def destroy
-        @professor = Professor.find(params[:id])
+        @professor = find_by_id
         @professor.destroy
         redirect_to professors_path
     end 
-  
+    
+    private
+   
+    def professor_params
+      params.require(:professor).permit(:name)
+    end
+
+    def find_by_id
+      Professor.find(params[:id])
+    end
   end
