@@ -2,7 +2,7 @@
 <h3>
 <%= @professor.name %><br>
 </h3>
-
+<h5>hello</h5>
 <%= link_to "Back", professors_path %>
 <%= link_to "Edit", edit_professor_path %>
 <%= button_to "Delete", @professor, method: :delete, data: { confirm: "Are you sure you want to delete Professor #{@professor.name}?"} %>
