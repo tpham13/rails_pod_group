@@ -13,8 +13,10 @@ class StudentsController < ApplicationController
     end 
   
     def create
-      @student = Student.create(student_params)
-      if @student 
+         @student = Student.new(student_params) 
+
+      if @student.valid? 
+         @student.save
         redirect_to student_path(@student)
       else 
         render :new
@@ -26,8 +28,10 @@ class StudentsController < ApplicationController
     end
 
     def update
-        @student = find_by_id
-        if @student.update(student_params)
+        @student = find_by_id 
+        @student.update(student_params) 
+
+          if @student.save
           redirect_to student_path(@student)
         else 
           render :edit

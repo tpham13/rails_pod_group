@@ -14,9 +14,10 @@ class ProfessorsController < ApplicationController
     end 
   
     def create
-      @professor = Professor.new(professor_params)
+      @professor = Professor.new(professor_params) 
+
       if @professor.valid?
-        @professor.save
+         @professor.save
         redirect_to professors_path
       else
         render :new
@@ -29,8 +30,9 @@ class ProfessorsController < ApplicationController
 
     def update
         @professor = find_by_id
+        @professor.update(professor_params) 
+
         if @professor.valid?
-          @professor.update(professor_params)
           redirect_to professor_path
         else
           render :edit

@@ -1,15 +1,30 @@
-<h1> Create Course </h1>
+<h1> Create Course </h1> 
+
+<% if @course.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@course.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+ 
+    <ul>
+    <% @course.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_for(@course) do |p| %> 
 
-<%= p.label :name %><br>
-<%= p.text_field :name %><br>
+  <%= p.label :name %><br>
+  <%= p.text_field :name %><br>
 
-<%= p.label :subject %><br>
-<%= p.text_field :subject %><br>
+  <%= p.label :subject %><br>
+  <%= p.text_field :subject %><br>
 
-<%= p.label :course_time %><br>
-<%= p.datetime_select :course_time %><br>
+  <%= p.label :course_time %><br>
+  <%= p.datetime_select :course_time %><br>
 
 <%= p.submit :submit %>
 <%end%>

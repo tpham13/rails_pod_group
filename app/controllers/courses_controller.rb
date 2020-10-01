@@ -9,11 +9,15 @@ class CoursesController < ApplicationController
     end 
   
     def new
-      @course = Course.new 
+      @course = Course.new
     end 
   
-    def create
-      if @course 
+    def create 
+
+      @course = Course.new(course_params)
+
+      if @course.valid? 
+         @course.save
         redirect_to course_path(@course)
       else 
         render :new
@@ -25,8 +29,10 @@ class CoursesController < ApplicationController
     end
     
     def update
-      @course = find_by_id
-      if @course.update(course_params)
+       @course = find_by_id
+       @course.update(course_params)
+
+       if @course.valid?
         redirect_to course_path(@course)
       else 
         render :edit

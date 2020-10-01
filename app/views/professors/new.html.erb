@@ -1,4 +1,19 @@
-<h1> Create Professor </h1>
+<h1> Create Professor </h1> 
+
+<% if @professor.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@professor.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+ 
+    <ul>
+    <% @professor.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_for(@professor) do |p| %> 
 <%= p.label :name %>
